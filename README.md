@@ -1,4 +1,4 @@
-# 3.0test
+# antd-admin
 
 ## Project setup
 ```
