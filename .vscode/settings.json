@@ -1,0 +1,25 @@
+{
+  "files.autoSave": "off",
+  "eslint.enable":true,
+  "eslint.options": {
+    "extensions":[
+      ".js",
+      ".vue",
+      ".ts",
+      ".tsx"
+    ]
+   },
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ],
+    "css.validate": false,
+    "scss.validate": false,
+    "less.validate": false,
+    "editor.codeActionsOnSave": {
+       "source.fixAll": true
+    },
+    "terminal.integrated.shell.windows": "F:\\env\\Git\\bin\\bash.exe",
+}
