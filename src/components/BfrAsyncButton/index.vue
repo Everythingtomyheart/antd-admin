@@ -1,12 +1,12 @@
 <template>
-  <bfr-button
+  <a-button
     v-bind="$attrs"
     :loading="loading"
     :disabled="$attrs.disabled || loading"
     @click.prevent="asyncClick"
   >
     {{ btnText }}
-  </bfr-button>
+  </a-button>
 </template>
 <script lang="ts">
 import { defineComponent, watchEffect, ref } from 'vue';

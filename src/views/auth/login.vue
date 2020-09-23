@@ -52,9 +52,9 @@
                 >
               </a-form-item>
               <p>
-                <bfr-button type="text" native-type="button" @click="toggleLoginType">
+                <a-button type="text" native-type="button" @click="toggleLoginType">
                   {{ loginType == 1 ? '账号/邮箱' : '手机号' }}登录
-                </bfr-button>
+                </a-button>
               </p>
             </a-col>
           </a-row>
