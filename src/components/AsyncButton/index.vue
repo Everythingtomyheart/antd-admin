@@ -21,7 +21,7 @@ export interface BtnClickEvent extends Event {
   error: (text?: string) => void;
 }
 export default defineComponent({
-  name: 'BfrAsyncButton',
+  name: 'AsyncButton',
   props: {
     defaultText: {
       type: String,

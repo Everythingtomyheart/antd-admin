@@ -17,10 +17,10 @@
 </template>
 <script lang="ts">
 import { defineComponent, watchEffect, ref } from 'vue';
-import * as service from '@/api/auth/login';
+import { getCode, validateCode } from '@/api/auth/login';
 import { throttle } from 'lodash';
-const throttleGetCode = throttle(service.getCode, 200) as typeof service.getCode;
-const validateCode = throttle(service.validateCode, 500) as typeof service.validateCode;
+const throttleGetCode = throttle(getCode, 200) as typeof getCode;
+const throttleValidateCode = throttle(validateCode, 500) as typeof validateCode;
 export default defineComponent({
   name: 'ImgCode',
   props: {
@@ -43,7 +43,7 @@ export default defineComponent({
     }
     getCode();
     async function validator(): Promise<void> {
-      const result = await validateCode(code.value.id, codeValue.value);
+      const result = await throttleValidateCode(code.value.id, codeValue.value);
       if (result.issuccess) {
         emit('update:status', true);
         emit('success');
@@ -91,7 +91,7 @@ export default defineComponent({
   width: 100px;
   height: 30px;
   object-fit: contain;
-  margin: 0 -20px;
+  margin: 0 -10px;
   text-align: center;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;

@@ -1,7 +1,5 @@
 <template>
-  <img-code />
-  <bfr-async-button default-text="123" />
-  <!-- <router-view /> -->
+  <router-view />
 </template>
 <style>
 #app {
