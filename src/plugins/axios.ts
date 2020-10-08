@@ -1,66 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use strict';
 
+import { guid } from '@/utils';
+import { message } from 'ant-design-vue';
 import Axios, { AxiosRequestConfig, Canceler } from 'axios';
 // import router from '@/router';
 import Nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
-Axios.defaults.timeout = 60000;
+Axios.defaults.timeout = 6000;
 import { apiUrl } from './config';
-const axios = Axios.create({
-  // baseURL: '/api'
-  baseURL: apiUrl
-});
-function guid(): string {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c: string): string => {
-    const r = (Math.random() * 16) | 0;
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-const axiosCancel: { cancel: Canceler }[] = [];
-// 请求拦截器
-const axiosInstances: Record<string, AxiosRequestConfig> = {};
-axios.interceptors.request.use(
-  config => {
-    config.cancelToken = new Axios.CancelToken(cancel => {
-      axiosCancel.push({
-        cancel
-      });
-    });
-    // if (UserStoreModule.token) {
-    //   // 判断token是否存在
-    //   config.headers.Authorization = UserStoreModule.token; // 将token设置成请求头
-    //   config.headers.Token = UserStoreModule.token; // 将token设置成请求头
-    // }
-    return config;
-  },
-  err => {
-    return Promise.reject(err);
-  }
-);
-
-// function unlogin(): void {
-//   const cancelArr = axiosCancel;
-//   cancelArr.forEach((ele, index) => {
-//     ele.cancel(); // 在失败函数中返回这里自定义的错误信息
-//     delete axiosCancel[index];
-//   });
-// }
-
-axios.interceptors.response.use(
-  response => {
-    const data = response.data;
-    if (data.status === 'success') {
-      return data;
-    } else {
-      return Promise.reject(data);
-    }
-  },
-  error => {
-    return Promise.reject(error); // 返回接口返回的错误信息
-  }
-);
 
 export type Result<T> = Promise<{ err: object | null; data: T; issuccess: boolean }>;
 type RequestMethod = <T>(url: string, data?: any, opt?: AxiosRequestConfig) => Result<T>;
@@ -78,12 +26,49 @@ interface Request {
   delete: RequestMethod;
   patch: RequestMethod;
 }
+const errorMessage = {
+  timeout: '服务器连接超时',
+  500: '服务器内部错误',
+  400: '请求参数错误',
+  404: '请求不存在'
+};
+type errorMessageType = keyof typeof errorMessage;
+type RequestType<T> = { err: object | null; data: T; issuccess: boolean };
+const axios = Axios.create({
+  // baseURL: '/api'
+  baseURL: apiUrl
+});
+const axiosCancel: { cancel: Canceler }[] = [];
+// 请求拦截器
+const axiosInstances: Record<string, AxiosRequestConfig> = {};
+axios.interceptors.request.use(
+  config => {
+    config.cancelToken = new Axios.CancelToken(cancel => {
+      axiosCancel.push({
+        cancel
+      });
+    });
+    // TODO 设置token
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+);
 
-// const errorMessage: { [propName: number]: string } = {
-//   500: '服务器内部错误',
-//   400: '请求参数错误',
-//   404: '请求不存在'
-// };
+axios.interceptors.response.use(
+  response => {
+    const data = response.data;
+    if (data.status === 'success') {
+      return data;
+    } else {
+      return Promise.reject(data);
+    }
+  },
+  error => {
+    return Promise.reject(error); // 返回接口返回的错误信息
+  }
+);
 
 const request: Request = async <T>(
   url: string,
@@ -97,11 +82,8 @@ const request: Request = async <T>(
   if (opt.loading) {
     Nprogress.start();
   }
-  const res: { err: object | null; data: T; issuccess: boolean } = {} as {
-    err: object | null;
-    data: T;
-    issuccess: boolean;
-  };
+  // 返回结果类型
+  const res: RequestType<T> = {} as RequestType<T>;
   try {
     const response = await axios({
       url,
@@ -113,22 +95,28 @@ const request: Request = async <T>(
     const result: T = response.data;
     if (opt?.success) {
       // success
+      message.success(opt.success);
     }
     res.data = result;
     res.issuccess = true;
   } catch (error) {
     if (opt.error === true) {
+      let errorMsg = '';
       if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
         // 服务器超时
+        errorMsg = errorMessage.timeout;
       } else if (error.response && typeof error.response.data === 'string') {
         // 服务器错误
+        errorMsg = errorMessage[error.response.status as errorMessageType];
       } else {
         // 业务错误
-        console.log([error]);
+        errorMsg = error.msg;
       }
+      message.error(errorMsg);
     } else {
       if (opt.error) {
         // 自定义错误展示
+        message.error(opt.error);
       }
     }
     // 只有在真正为请求错误时，才需要将error数据进行传递
@@ -137,8 +125,7 @@ const request: Request = async <T>(
     } else if (error.status === 'fail') {
       res.err = error;
     } else {
-      const err = {};
-      res.err = err;
+      res.err = null;
     }
     res.issuccess = false;
   } finally {
@@ -168,6 +155,6 @@ request.patch = <T>(url: string, data?: any, opt?: AxiosRequestConfig): Result<T
   return request<T>(url, 'patch', data, opt);
 };
 
-export const requestStatic = Axios.create({});
+// export const requestStatic = Axios.create({});
 
 export default request;

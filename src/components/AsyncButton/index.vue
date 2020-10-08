@@ -12,7 +12,7 @@
 import { defineComponent, watchEffect, ref } from 'vue';
 import mitt from 'mitt';
 const emiter = mitt();
-export interface BtnClickEvent extends Event {
+export interface AsyncButtonEvent extends Event {
   loading: {
     start: () => void;
     done: () => void;
@@ -56,9 +56,11 @@ export default defineComponent({
             }
           },
           success: (text?: string): void => {
+            btne.loading.done();
             btnTextFormat(text || '保存成功');
           },
           error: (text?: string): void => {
+            btne.loading.done();
             btnTextFormat(text || '保存失败');
           }
         },

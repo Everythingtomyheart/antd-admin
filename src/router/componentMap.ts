@@ -1,11 +1,20 @@
+import { defineAsyncComponent } from 'vue';
+
 const componentMap = {
-  login: () => import(/* webpackChunkName: "login" */ '@/views/auth/login.vue'),
-  login1: () => import(/* webpackChunkName: "login" */ '@/views/auth/login.vue')
+  defaultLayout: defineAsyncComponent(() =>
+    import(/* webpackChunkName: "defaultLayout" */ '@/layout/defaultLayout.vue')
+  ),
+  login: defineAsyncComponent(() =>
+    import(/* webpackChunkName: "login" */ '@/views/login/login.vue')
+  ),
+  user: defineAsyncComponent(() =>
+    import(/* webpackChunkName: "user" */ '@/views/auth/user/index.vue')
+  )
 };
 type ComponentMapType = keyof typeof componentMap;
-// const map: ComponentMap = (componentMap as unknown) as ComponentMap;
+
+export function getComponent(name: ComponentMapType) {
+  return componentMap[name];
+}
+
 export default componentMap;
-// const login = {
-//   name: 'login'
-// };
-// map[login.name];

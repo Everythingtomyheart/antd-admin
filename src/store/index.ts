@@ -1,8 +1,8 @@
 import { createStore } from 'vuex';
-
-export default createStore({
+const store = createStore({
   state: {},
   mutations: {},
-  actions: {},
-  modules: {}
+  actions: {}
 });
+export default store;
+// export const isLocal = localStorage.getItem('aider') !== null;
