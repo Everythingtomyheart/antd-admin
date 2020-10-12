@@ -55,11 +55,13 @@
   </a-layout>
 </template>
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed, ref, watch } from 'vue';
 import LayoutMenu from './components/LayoutMenu.vue';
 import MenuStore from '@/store/modules/menu';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
 import { useRoute } from 'vue-router';
+import { useScroll } from '@/hooks';
+
 export default defineComponent({
   components: {
     LayoutMenu,
@@ -80,16 +82,14 @@ export default defineComponent({
     };
     const siderWidth = computed(() => (collapse.value ? '80px' : '200px'));
     const fixedbreadcrumb = ref(false);
-    const scroll = (e: Event) => {
-      const target = (e.target as Document).scrollingElement as HTMLElement;
-      if (target.scrollTop >= 30) {
+    const [position] = useScroll(() => document);
+    watch(position, val => {
+      if (val.top >= 30) {
         fixedbreadcrumb.value = true;
       } else {
         fixedbreadcrumb.value = false;
       }
-    };
-
-    document.onscroll = scroll;
+    });
     return {
       fixedbreadcrumb,
       toggleCollapsed,
@@ -127,7 +127,7 @@ export default defineComponent({
   &-header {
     position: fixed;
     right: 0;
-    z-index: 1;
+    z-index: 9;
     display: flex;
     align-items: center;
     width: calc(100% - var(--siderWidth));

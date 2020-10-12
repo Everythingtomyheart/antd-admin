@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { usePage } from '@/utils/hooks';
+import usePage from '@/hooks/usePage';
 import { listUser } from '@/api/auth/user';
 import { User, PageModel } from '@/models';
 export default defineComponent({
