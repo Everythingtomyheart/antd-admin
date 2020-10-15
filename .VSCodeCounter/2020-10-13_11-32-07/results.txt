@@ -1,0 +1,86 @@
+Date : 2020-10-13 11:32:07
+Directory : f:\MyProjects\antd-admin
+Total : 37 files,  1369 codes, 59 comments, 78 blanks, all 1506 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Vue        |          8 |        489 |          4 |         19 |        512 |
+| TypeScript |         21 |        415 |         24 |         46 |        485 |
+| JavaScript |          4 |        348 |         19 |          4 |        371 |
+| JSON       |          2 |         82 |         11 |          2 |         95 |
+| Markdown   |          1 |         19 |          0 |          6 |         25 |
+| HTML       |          1 |         16 |          1 |          1 |         18 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                              | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                 |         37 |      1,369 |         59 |         78 |      1,506 |
+| public                                                            |          1 |         16 |          1 |          1 |         18 |
+| src                                                               |         29 |        904 |         28 |         65 |        997 |
+| src\@types                                                        |          3 |         18 |          4 |          3 |         25 |
+| src\api                                                           |          2 |          9 |          0 |          3 |         12 |
+| src\api\auth                                                      |          2 |          9 |          0 |          3 |         12 |
+| src\components                                                    |          2 |         86 |          0 |          4 |         90 |
+| src\components\AsyncButton                                        |          1 |         78 |          0 |          1 |         79 |
+| src\hooks                                                         |          4 |         64 |          1 |          8 |         73 |
+| src\layout                                                        |          4 |        229 |          2 |         12 |        243 |
+| src\layout\components                                             |          3 |         74 |          1 |          8 |         83 |
+| src\models                                                        |          1 |         20 |          0 |          3 |         23 |
+| src\plugins                                                       |          2 |        151 |         13 |         12 |        176 |
+| src\router                                                        |          3 |         91 |          0 |          8 |         99 |
+| src\store                                                         |          2 |         23 |          1 |          2 |         26 |
+| src\store\modules                                                 |          1 |         16 |          0 |          1 |         17 |
+| src\utils                                                         |          2 |         17 |          5 |          3 |         25 |
+| src\views                                                         |          2 |        172 |          2 |          5 |        179 |
+| src\views\auth                                                    |          1 |         74 |          2 |          2 |         78 |
+| src\views\auth\user                                               |          1 |         74 |          2 |          2 |         78 |
+| src\views\login                                                   |          1 |         98 |          0 |          3 |        101 |
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                          | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| f:\MyProjects\antd-admin\.eslintrc.js                             | JavaScript |        293 |         19 |          1 |        313 |
+| f:\MyProjects\antd-admin\.stylelintrc.js                          | JavaScript |         38 |          0 |          1 |         39 |
+| f:\MyProjects\antd-admin\README.md                                | Markdown   |         19 |          0 |          6 |         25 |
+| f:\MyProjects\antd-admin\babel.config.js                          | JavaScript |          3 |          0 |          1 |          4 |
+| f:\MyProjects\antd-admin\package.json                             | JSON       |         51 |          0 |          1 |         52 |
+| f:\MyProjects\antd-admin\public\index.html                        | HTML       |         16 |          1 |          1 |         18 |
+| f:\MyProjects\antd-admin\src\@types\axios.d.ts                    | TypeScript |          9 |          3 |          1 |         13 |
+| f:\MyProjects\antd-admin\src\@types\file-module.d.ts              | TypeScript |          4 |          1 |          1 |          6 |
+| f:\MyProjects\antd-admin\src\@types\shims-vue.d.ts                | TypeScript |          5 |          0 |          1 |          6 |
+| f:\MyProjects\antd-admin\src\App.vue                              | Vue        |         10 |          0 |          1 |         11 |
+| f:\MyProjects\antd-admin\src\api\auth\login.ts                    | TypeScript |          4 |          0 |          1 |          5 |
+| f:\MyProjects\antd-admin\src\api\auth\user.ts                     | TypeScript |          5 |          0 |          2 |          7 |
+| f:\MyProjects\antd-admin\src\components\AsyncButton\index.vue     | Vue        |         78 |          0 |          1 |         79 |
+| f:\MyProjects\antd-admin\src\components\index.ts                  | TypeScript |          8 |          0 |          3 |         11 |
+| f:\MyProjects\antd-admin\src\hooks\index.ts                       | TypeScript |          4 |          0 |          2 |          6 |
+| f:\MyProjects\antd-admin\src\hooks\usePage.ts                     | TypeScript |          6 |          0 |          2 |          8 |
+| f:\MyProjects\antd-admin\src\hooks\useScroll.ts                   | TypeScript |         39 |          1 |          2 |         42 |
+| f:\MyProjects\antd-admin\src\hooks\useThrottle.ts                 | TypeScript |         15 |          0 |          2 |         17 |
+| f:\MyProjects\antd-admin\src\layout\components\LayoutMenu.vue     | Vue        |         32 |          1 |          4 |         37 |
+| f:\MyProjects\antd-admin\src\layout\components\LayoutMenuItem.vue | Vue        |         15 |          0 |          2 |         17 |
+| f:\MyProjects\antd-admin\src\layout\components\LayoutMenuSub.vue  | Vue        |         27 |          0 |          2 |         29 |
+| f:\MyProjects\antd-admin\src\layout\defaultLayout.vue             | Vue        |        155 |          1 |          4 |        160 |
+| f:\MyProjects\antd-admin\src\main.ts                              | TypeScript |         14 |          0 |          1 |         15 |
+| f:\MyProjects\antd-admin\src\models\index.d.ts                    | TypeScript |         20 |          0 |          3 |         23 |
+| f:\MyProjects\antd-admin\src\plugins\axios.ts                     | TypeScript |        139 |         13 |          9 |        161 |
+| f:\MyProjects\antd-admin\src\plugins\config.ts                    | TypeScript |         12 |          0 |          3 |         15 |
+| f:\MyProjects\antd-admin\src\router\componentMap.ts               | TypeScript |         17 |          0 |          4 |         21 |
+| f:\MyProjects\antd-admin\src\router\index.ts                      | TypeScript |         12 |          0 |          3 |         15 |
+| f:\MyProjects\antd-admin\src\router\routes.ts                     | TypeScript |         62 |          0 |          1 |         63 |
+| f:\MyProjects\antd-admin\src\store\index.ts                       | TypeScript |          7 |          1 |          1 |          9 |
+| f:\MyProjects\antd-admin\src\store\modules\menu.ts                | TypeScript |         16 |          0 |          1 |         17 |
+| f:\MyProjects\antd-admin\src\utils\date.ts                        | TypeScript |          7 |          5 |          1 |         13 |
+| f:\MyProjects\antd-admin\src\utils\index.ts                       | TypeScript |         10 |          0 |          2 |         12 |
+| f:\MyProjects\antd-admin\src\views\auth\user\index.vue            | Vue        |         74 |          2 |          2 |         78 |
+| f:\MyProjects\antd-admin\src\views\login\login.vue                | Vue        |         98 |          0 |          3 |        101 |
+| f:\MyProjects\antd-admin\tsconfig.json                            | JSON       |         31 |         11 |          1 |         43 |
+| f:\MyProjects\antd-admin\vue.config.js                            | JavaScript |         14 |          0 |          1 |         15 |
+| Total                                                             |            |      1,369 |         59 |         78 |      1,506 |
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
